@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Pizza Pic </title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/master.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <div class="container" ng-app ng-init="img1='./img/pizza.png';img1width=30;img2='http://wonderopolis.org/wp-content/uploads//2015/03/203_f.jpg'">
+      <div class="row">
+        <div class="row">
+            <div class="col-sm-2"> img1: </div>
+            <div class="col-sm-8"><input type="text" ng-model="img1"></div>
+            <div class="col-sm-2"><input type="number" ng-model="img1width">%</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2"> img2: </div>
+            <div class="col-sm-10"><input type="text" ng-model="img2"></div>
+        </div>
+        <b>current width: </b> {{1348 * (img1width / 100)}}
+        <div class="row">
+            <div class="col-sm-12">
+                <img id="img1id" width="{{1348 * (img1width / 100)}}" src="{{img1}}" alt="">
+                <img id="img2id" width="{{1348 * (img1width / 100)}}" src="{{img2}}" alt="">
+            </div>
+        </div>
+        <b>current height: </b>
+
+      </div>
+    </div>
+
+</body>
+</html>
