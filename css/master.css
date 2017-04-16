@@ -1,12 +1,16 @@
 #img1id {
     position: absolute;
-    top:0px;
-    left:0px;
+    top: 0px;
     z-index: 1;
+    margin: 0 auto;
+    
 }
-#img2id {
-    position: absolute;
-    top:0px;
-    left:0px;
-    z-index: 0;
+
+#pic-display {
+    height: 100%;
+}
+
+.equal {
+    display: flex;
+    display: -webkit-flex;
 }

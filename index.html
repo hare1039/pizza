@@ -8,10 +8,79 @@
   <link rel="stylesheet" href="./css/master.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body ng-app ng-init="img1='./img/pizza.png';img1width=30;img2='http://wonderopolis.org/wp-content/uploads//2015/03/203_f.jpg'">
 
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
-    <div class="container" ng-app ng-init="img1='./img/pizza.png';img1width=30;img2='http://wonderopolis.org/wp-content/uploads//2015/03/203_f.jpg'">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-all.min.js"></script>
+  <div class="container">
+    <div class="row equal">
+      <div class="col-sm-6 well">
+	<div class="row">
+	  <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+	    <div class="row">
+		<img id="img2id" class="img-responsive center-block" src="{{img2}}" alt="">
+             
+		<img id="img1id" class="img-responsive center-block" src="{{img1}}" alt="">
+		  <div class="btn-group">
+		    <button type="button" class="btn btn-primary">Apple</button>
+		    <button type="button" class="btn btn-primary">sony</button>
+		  </div>
+              	      
+                
+	    </div>
+	    
+      </div>
+          </div>
+	  <div class="col-sm-2"></div>
+        </div>
+	
+      <div class="col-sm-6 well">
+	<pre>
+L1
+
+
+
+
+
+
+
+10
+
+
+
+
+
+
+
+
+
+20
+
+
+
+
+
+
+
+
+
+30
+
+
+
+
+35
+</pre></div>
+    </div>
+  </div>
+
+
+
+
+
+  
+    <div class="container">
       <div class="row">
         <div class="row">
             <div class="col-sm-2"> img1: </div>
@@ -22,17 +91,35 @@
             <div class="col-sm-2"> img2: </div>
             <div class="col-sm-10"><input type="text" ng-model="img2"></div>
         </div>
-        <b>current width: </b> {{1348 * (img1width / 100)}}
-        <div class="row">
-            <div class="col-sm-12">
-                <img id="img1id" width="{{1348 * (img1width / 100)}}" src="{{img1}}" alt="">
-                <img id="img2id" width="{{1348 * (img1width / 100)}}" src="{{img2}}" alt="">
-            </div>
-        </div>
-        <b>current height: </b>
 
+        <b>current width: </b> {{1348 * (img1width / 100)}}
+
+       
+      </div>
+      <div class="row">
+      <form name="myForm" class="col-sm-12">
+	<div>Crop Image and Upload</div>
+	<button ngf-select ng-model="picFile" accept="image/*">
+	  Select Picture</button>
+	<div ngf-drop ng-model="picFile" ngf-pattern="image/*"
+	     class="cropArea">
+	  <img-crop image="picFile  | ngfDataUrl"
+		    result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+	  </img-crop>
+	</div>
+	<div>
+	  <img ng-src="{{croppedDataUrl}}" />
+	</div>
+	<button ng-click="upload(croppedDataUrl, picFile.name)">Submit</button>
+
+	<span class="progress" ng-show="progress >= 0">
+	  <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+	</span>
+	<span ng-show="result">Upload Successful</span>
+	<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+      </form>
       </div>
     </div>
-
+    <script src="js/fileupload.js"><script>
 </body>
 </html>
