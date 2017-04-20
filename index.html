@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <!--div class="container">
             <div class="row">
                 <div class="row">
                     <div class="col-sm-2"> img1: </div>
@@ -53,7 +53,7 @@
                     <div class="col-sm-10"><input type="text" ng-model="img2"></div>
                 </div>
             </div>
-        </div>
+        </div-->
     </div>
 
     <form name="myForm">
@@ -66,24 +66,18 @@
                 result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
             </img-crop-->
             <div>
-                <input type="file" img-cropper-fileread image="cropper.sourceImage" />
                 <div>
-                    <canvas width="500" height="300" id="canvas" image-cropper image="cropper.sourceImage" cropped-image="cropper.croppedImage" crop-width="400" crop-height="200" keep-aspect="true" touch-radius="30" crop-area-bounds="bounds"></canvas>
+                    <canvas width="500" height="300" id="canvas" image-cropper image="picFile | ngfDataUrl" cropped-image="cropper.croppedImage" crop-width="671" crop-height="1024" keep-aspect="true" touch-radius="30" crop-area-bounds="bounds"></canvas>
                 </div>
                 <div>Cropped Image (Left: {{bounds.left}} Right: {{bounds.right}} Top: {{bounds.top}} Bottom: {{bounds.bottom}})</div>
                 <div ng-show="cropper.croppedImage!=null"><img ng-src="{{cropper.croppedImage}}" /></div>
             </div>
-
-
         </div>
         <div>
-            <img ng-src="{{croppedDataUrl}}" />
+            <img ng-src="{{cropper.croppedImage}}" />
         </div>
 
-
-
-
-        <button ng-click="upload(croppedDataUrl, picFile.name)">Submit</button>
+        <button ng-click="upload(cropper.croppedImage, picFile.name)">Submit</button>
         <span class="progress" ng-show="progress >= 0">
             <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
         </span>
