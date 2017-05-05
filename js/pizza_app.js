@@ -1,19 +1,20 @@
 //inject ngFileUpload and ngImgCrop directives and services.
-var app2 = angular.module('fileupload_app', ['ngFileUpload', 'ngImgCrop', 'angular-img-cropper', "ngDialog"]);
+var app2 = angular.module("pizza_app", ['ngFileUpload', 'ngImgCrop', 'angular-img-cropper', "ngDialog"]);
 
 app2.controller('ctrl_fileupload', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
     $scope.upload = function (dataUrl, name) {
     	Upload.upload({
-    	    url: 'https://hare1039.ddns.net/webapps/pizza/upload',
+    	    url: "https://hare1039.ddns.net/webapps/pizza/upload",
     	    data: {
     		    file: Upload.dataUrltoBlob(dataUrl, name)
     	    },
     	}).then(function (response) {
     	    $timeout(function () {
-    		    $scope.result = response.data;
+    		$scope.result = response.data;
                 if($scope.picFile != null){
-                    $scope.img2 = "//hare1039.ddns.net/webapps/pizza/img_up/" + $scope.picFile.name;
+                    $scope.ngDialogData.img2 = "//hare1039.ddns.net/webapps/pizza/img_up/" + $scope.picFile.name;
                 }
+		
     	    });
     	}, function (response) {
     	    if (response.status > 0)
@@ -25,7 +26,7 @@ app2.controller('ctrl_fileupload', ['$scope', 'Upload', '$timeout', function ($s
 }]);
 
 
-app2.controller("ctrl_main", ["$scope", function($scope){
+app2.controller("ctrl_main", ["$scope", "ngDialog", function($scope, ngDialog){
     
     $scope.img1      = './img/pizza.png';
     $scope.img1width = 30;
@@ -67,4 +68,14 @@ L1
     $scope.bounds.top = 0;
     $scope.bounds.bottom = 0
 
+    $scope.ng_del = function () {
+	ngDialog.openConfirm({
+	    template: "./pop_up.html",
+	    className: "ngdialog-theme-default",
+	    scope: $scope,
+	    data: $scope,
+	    width: "40%"	     
+	});
+	
+    };
 }]);

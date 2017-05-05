@@ -12,10 +12,13 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/ng-img-crop/0.3.2/ng-img-crop.js" charset="utf-8"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ng-img-crop/0.3.2/ng-img-crop.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-img-cropper/1.1.0/angular-img-cropper.min.js" charset="utf-8"></script>
-    <script src="./js/picture.js" charset="utf-8"></script>
-    <script src="./js/fileupload.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.1.0/css/ngDialog-theme-default.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.1.0/css/ngDialog.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.1.0/js/ngDialog.min.js" charset="utf-8"></script>
+    
+    <script src="./js/pizza_app.js" charset="utf-8"></script>
 </head>
-<body ng-app="fileupload_app">
+<body ng-app="pizza_app">
     <div ng-controller="ctrl_main">
         <div class="page-header text-center" style="height: 2"> <h1>Filter Simulator</h1> </div>
         <div class="container">
@@ -31,6 +34,7 @@
                                     <a herf="#" type="button" class="btn btn-primary">Apple</a>
                                     <a herf="#" type="button" class="btn btn-primary">Sony</a>
                                 </div>
+				<input type="button" value="Click" ng-click="ng_del()">
                     	    </div>
                         </div>
                     </div>
@@ -41,50 +45,6 @@
                 </div>
             </div>
         </div>
-        <!--div class="container">
-            <div class="row">
-                <div class="row">
-                    <div class="col-sm-2"> img1: </div>
-                    <div class="col-sm-8"><input type="text" ng-model="img1"></div>
-                    <div class="col-sm-2"><input type="number" ng-model="img1width">%</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2"> img2: </div>
-                    <div class="col-sm-10"><input type="text" ng-model="img2"></div>
-                </div>
-            </div>
-        </div-->
     </div>
-
-    <form name="myForm" ng-controller="ctrl_fileupload">
-        <div>Crop Image and Upload</div>
-        <button ngf-select ng-model="picFile" accept="image/*">
-            Select Picture
-        </button>
-        <div ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea">
-            <!--img-crop image="picFile | ngfDataUrl"
-                result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
-            </img-crop-->
-            <div>
-                <div>
-                    <canvas width="500" height="300" id="canvas" image-cropper image="picFile | ngfDataUrl" cropped-image="cropper.croppedImage" crop-width="671" crop-height="1024" keep-aspect="true" touch-radius="30" crop-area-bounds="bounds"></canvas>
-                </div>
-                <div>Cropped Image (Left: {{bounds.left}} Right: {{bounds.right}} Top: {{bounds.top}} Bottom: {{bounds.bottom}})</div>
-                <div ng-show="cropper.croppedImage!=null"><img ng-src="{{cropper.croppedImage}}" /></div>
-            </div>
-        </div>
-        <div>
-            <img ng-src="{{cropper.croppedImage}}" />
-        </div>
-
-        <button ng-click="upload(cropper.croppedImage, picFile.name)">Submit</button>
-        <span class="progress" ng-show="progress >= 0">
-            <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
-        </span>
-        <span ng-show="result">Upload Successful</span>
-        <span class="err" ng-show="error_msg">{{error_msg}}</span>
-    </form>
-
-
 </body>
 </html>
