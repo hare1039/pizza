@@ -15,8 +15,8 @@
     <script src="./js/picture.js" charset="utf-8"></script>
     <script src="./js/fileupload.js" charset="utf-8"></script>
 </head>
-<body ng-app="fileupload_app" ng-controller="ctrl_fileupload">
-    <div>
+<body ng-app="fileupload_app">
+    <div ng-controller="ctrl_main">
         <div class="page-header text-center" style="height: 2"> <h1>Filter Simulator</h1> </div>
         <div class="container">
             <div class="row equal">
@@ -56,7 +56,7 @@
         </div-->
     </div>
 
-    <form name="myForm">
+    <form name="myForm" ng-controller="ctrl_fileupload">
         <div>Crop Image and Upload</div>
         <button ngf-select ng-model="picFile" accept="image/*">
             Select Picture
