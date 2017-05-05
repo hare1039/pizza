@@ -74,7 +74,7 @@ L1
 	    className: "ngdialog-theme-default",
 	    scope: $scope,
 	    data: $scope,
-	    width: "40%"	     
+	    width: 530	     
 	});
 	
     };
