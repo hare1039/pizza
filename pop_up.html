@@ -14,21 +14,21 @@
         <!--div>
             <img ng-src="{{cropper.croppedImage}}" />
         </div-->
-	<div class="container row">
-	  <button class="col-sm-2 btn btn-info" ngf-select ng-model="picFile" accept="image/*">
-            Select Picture
-          </button>
-          <button class="col-sm-2 btn btn-primary" ng-click="upload(cropper.croppedImage, picFile.name)">Push Picture</button>
-          <!--span class="col-sm-1" ng-show="result">Upload Successful</span-->	  
-	  <div class="row dialog-contents">
-	    <input class="btn btn-default" type="button" value="Close" ng-click="closeThisDialog(0)"/>
-	  </div>
-          <span class="err" ng-show="error_msg">{{error_msg}}</span>
+	<div class="container row" style="width: 530px;">
+	  <span class="" style="width: 530px;" ng-show="progress >= 0">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}%" ng-bind="progress + '%'"> {{progress}}%</div>
+          </span>
 	</div>
 	<div class="container row">
-	  <span class="col-sm-8 progress" ng-show="progress >= 0">
-            <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
-          </span>
+	  <button class="btn btn-info" style="width:248px;" ngf-select ng-model="picFile" accept="image/*">
+            Select Picture
+          </button>
+          <button class="btn btn-primary" style="width:247px;" ng-click="upload(cropper.croppedImage, picFile.name)">Push Picture</button>
+          <!--span class="col-sm-1" ng-show="result">Upload Successful</span-->	  
+	  <div class="dialog-contents">
+	    <input class="btn btn-default" style="width:85px;" type="button" value="Close" ng-click="closeThisDialog(0)"/>
+	  </div>
+          <span class="err" ng-show="error_msg">{{error_msg}}</span>
 	</div>
     </form>
   </body>
