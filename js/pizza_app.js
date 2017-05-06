@@ -1,5 +1,5 @@
 //inject ngFileUpload and ngImgCrop directives and services.
-var app2 = angular.module("pizza_app", ['ngFileUpload', 'ngImgCrop', 'angular-img-cropper', "ngDialog"]);
+var app2 = angular.module("pizza_app", ['ngFileUpload', 'angular-img-cropper', "ngDialog", "webcam"]);
 
 app2.controller('ctrl_fileupload', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
     $scope.upload = function (dataUrl, name) {
