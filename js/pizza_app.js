@@ -32,7 +32,7 @@ app2.controller("ctrl_main", ["$scope", "ngDialog", function($scope, ngDialog){
     $scope.img1width = 30;
     $scope.img2      = 'http://wonderopolis.org/wp-content/uploads//2015/03/203_f.jpg';
     $scope.article   = `
-L1
+line 1
 
 
 
@@ -61,12 +61,12 @@ L1
 
 
 30`;
-    $scope.cropper = {};
-    $scope.bounds = {};
-    $scope.bounds.left = 0;
-    $scope.bounds.right = 0;
-    $scope.bounds.top = 0;
-    $scope.bounds.bottom = 0
+    $scope.cropper       = {};
+    $scope.bounds        = {};
+    $scope.bounds.left   = 0;
+    $scope.bounds.right  = 0;
+    $scope.bounds.top    = 0;
+    $scope.bounds.bottom = 0;
 
     $scope.ng_del = function () {
 	ngDialog.openConfirm({
