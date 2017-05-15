@@ -25,16 +25,42 @@ app2.controller('ctrl_fileupload', ['$scope', 'Upload', '$timeout', function ($s
     };
 }]);
 
+app2.controller("ctrl_webcam", ["$scope", function($scope){
+    $scope.on_error   = function (err) {};
+    $scope.on_stream  = function (stream) {};
+    $scope.on_success = function (){};
+    $scope.channel_0  = {
+	videoWidth: 500,
+	video: null 
+    };
+    $scope.make_snapshot = function make_snapshot() {
+	if (_video) {
+	    var patCanvas = document.querySelector('#snapshot');
+	    if (!patCanvas) return;
+
+	    patCanvas.width = _video.width;
+	    patCanvas.height = _video.height;
+	    var ctxPat = patCanvas.getContext('2d');
+
+	    var idata = getVideoData($scope.patOpts.x, $scope.patOpts.y, $scope.patOpts.w, $scope.patOpts.h);
+	    ctxPat.putImageData(idata, 0, 0);
+
+	    sendSnapshotToServer(patCanvas.toDataURL());
+
+	    patData = idata;
+	}
+    };
+}]);
 
 app2.controller("ctrl_main", ["$scope", "ngDialog", function($scope, ngDialog){
     
     $scope.img1      = './img/pizza.png';
     $scope.img1width = 30;
-    $scope.img2      = 'http://wonderopolis.org/wp-content/uploads//2015/03/203_f.jpg';
+    $scope.img2      = 'https://wonderopolis.org/wp-content/uploads//2015/03/203_f.jpg';
     $scope.article   = `
-line 1
-
-
+ *Experiment Instructions*
+hello
+woo
 
 
 
@@ -71,6 +97,16 @@ line 1
     $scope.ng_del = function () {
 	ngDialog.openConfirm({
 	    template: "./pop_up.html",
+	    className: "ngdialog-theme-default",
+	    scope: $scope,
+	    data: $scope,
+	    width: 530	     
+	});
+	
+    };
+    $scope.ng_webcam = function () {
+	ngDialog.openConfirm({
+	    template: "./pop_up_webcam.html",
 	    className: "ngdialog-theme-default",
 	    scope: $scope,
 	    data: $scope,

@@ -1,0 +1,13 @@
+<html>
+  <head></head>
+  <body>
+    <div ng-controller="ctrl_webcam">
+      <webcam   id="snap"
+	        placeholder="img/mt.png"
+		on-stream="on_stream(stream)"
+		on-streaming="on_success()"
+		on-error="on_error(err)"
+		channel="channel_0"></webcam>
+    </div>
+  </body>
+</html>
