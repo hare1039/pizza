@@ -11,9 +11,6 @@
                 <div ng-show="cropper.croppedImage!=null"><img ng-src="{{cropper.croppedImage}}" /></div>
             </div>
         </div>
-        <!--div>
-            <img ng-src="{{cropper.croppedImage}}" />
-        </div-->
 	<div class="container row" style="width: 530px;">
 	  <span class="" style="width: 530px;" ng-show="progress >= 0">
             <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}%" ng-bind="progress + '%'"> {{progress}}%</div>

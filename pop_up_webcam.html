@@ -1,13 +1,32 @@
 <html>
   <head></head>
   <body>
-    <div ng-controller="ctrl_webcam">
-      <webcam   id="snap"
+    <form name="webcamform" ng-controller="ctrl_webcam">
+      <webcam   ng-show="show_webcam == true"
+	        id="snap"
 	        placeholder="img/mt.png"
 		on-stream="on_stream(stream)"
 		on-streaming="on_success()"
 		on-error="on_error(err)"
 		channel="channel_0"></webcam>
-    </div>
+      <canvas   ng-show="show_webcam == false"  width="500" height="300" image-cropper image="snap" cropped-image="snapout" crop-width="671" crop-height="1024" keep-aspect="true" touch-radius="30" crop-area-bounds="bounds"></canvas>
+      
+      	<div class="container row" style="width: 530px;">
+	  <span class="" style="width: 530px;" ng-show="progress >= 0">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}%" ng-bind="progress + '%'"> {{progress}}%</div>
+          </span>
+	</div>
+	<div class="container row">
+	  <button class="btn btn-info" style="width:248px;" ng-click="make_snapshot()">
+            Capture
+          </button>
+          <button class="btn btn-primary" style="width:247px;" ng-click="upload(snapout, snap.name)">submit</button>
+          <!--span class="col-sm-1" ng-show="result">Upload Successful</span-->	  
+	  <div class="dialog-contents">
+	    <input class="btn btn-default" style="width:85px;" type="button" value="Close" ng-click="closeThisDialog(0)"/>
+	  </div>
+          <span class="err" ng-show="error_msg">{{error_msg}}</span>
+	</div>
+    </form>
   </body>
 </html>

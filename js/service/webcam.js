@@ -31,12 +31,12 @@
 
 	webcam.makeSnapshot = function() {
 	    if (_video) {
-		var patCanvas = document.querySelector('#snapshot');
+		var patCanvas = document.querySelector("#snapshot");
 		if (!patCanvas) return;
 
 		patCanvas.width = _video.width;
 		patCanvas.height = _video.height;
-		var ctxPat = patCanvas.getContext('2d');
+		var ctxPat = patCanvas.getContext("2d");
 
 		var idata = getVideoData(webcam.patOpts.x, webcam.patOpts.y, webcam.patOpts.w, webcam.patOpts.h);
 		ctxPat.putImageData(idata, 0, 0);
