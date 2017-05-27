@@ -83,9 +83,9 @@ app2.controller("ctrl_webcam", ["$scope", "Upload", "$timeout",
 
 app2.controller("ctrl_main", ["$scope", "ngDialog", function($scope, ngDialog){
     
-    $scope.img1      = './img/pizza.png';
+    $scope.img1      = "./img/pizza.png";
     $scope.img1width = 30;
-    $scope.img2      = 'https://wonderopolis.org/wp-content/uploads//2015/03/203_f.jpg';
+    $scope.img2      = "./img/chuchu.png";
     $scope.article   = `
  *Experiment Instructions*
 hello
