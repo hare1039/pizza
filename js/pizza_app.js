@@ -3,24 +3,8 @@ var app2 = angular.module("pizza_app", ['ngFileUpload', 'angular-img-cropper', "
 
 app2.controller('ctrl_fileupload', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
     $scope.upload = function (dataUrl, name) {
-    	Upload.upload({
-    	    url: "https://hare1039.ddns.net/webapps/pizza/upload",
-    	    data: {
-    		    file: Upload.dataUrltoBlob(dataUrl, name)
-    	    },
-    	}).then(function (response) {
-    	    $timeout(function () {
-    		$scope.result = response.data;
-                if($scope.picFile != null){
-                    $scope.ngDialogData.img2 = "//hare1039.ddns.net/webapps/pizza/img_up/" + $scope.picFile.name;
-                }
-    	    });
-    	}, function (response) {
-    	    if (response.status > 0)
-                $scope.error_msg = response.status + ": " + response.data;
-    	}, function (evt) {
-    	    $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
-    	});
+	var blob = Upload.dataUrltoBlob(dataUrl, name);
+	$scope.ngDialogData.img2 = URL.createObjectURL(blob);
     };
 }]);
 
