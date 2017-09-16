@@ -1,5 +1,5 @@
 //inject ngFileUpload and ngImgCrop directives and services.
-var app2 = angular.module("pizza_app", ['ngFileUpload', 'angular-img-cropper', "ngDialog", "webcam"]);
+var app2 = angular.module("pizza_app", ['ngFileUpload', 'angular-img-cropper', "ngDialog", "webcam", "base64"]);
 
 app2.controller('ctrl_fileupload', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
     $scope.upload = function (dataUrl, name) {
@@ -60,32 +60,24 @@ app2.controller("ctrl_webcam", ["$scope", "Upload", "$timeout",
     };
 
     $scope.upload = function (dataUrl, name) {
-    	Upload.upload({
-    	    url: "https://hare1039.ddns.net/webapps/pizza/upload",
-    	    data: {
-    		    file: Upload.dataUrltoBlob(dataUrl, name)
-    	    },
-    	}).then(function (response) {
-    	    $timeout(function () {
-    		$scope.result = response.data;
-                if($scope.snap != null){
-                    $scope.ngDialogData.img2 = "//hare1039.ddns.net/webapps/pizza/img_up/blob";
-                }		
-    	    });
-    	}, function (response) {
-    	    if (response.status > 0)
-                $scope.error_msg = response.status + ': ' + response.data;
-    	}, function (evt) {
-    	    $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
-    	});
+        var blob = Upload.dataUrltoBlob(dataUrl, name);
+        $scope.ngDialogData.img2 = URL.createObjectURL(blob);
     };    
 }]);
 
-app2.controller("ctrl_main", ["$scope", "ngDialog", function($scope, ngDialog){
-    
+app2.controller("ctrl_main", ["$scope", "ngDialog", "$http", "$base64",
+      			      function($scope, ngDialog, $http, $base64){
+    $http.get("./img/chuchu.png", {responseType: "arraybuffer"}
+	).then(function(response) {
+            var blob = new Blob([response.data], {type: "image"});           
+            $scope.img2 = URL.createObjectURL(blob);
+	}).catch(function (error) {
+	    console.log("ERROR: " + error);
+	    throw error;
+	}
+    );
     $scope.img1      = "./img/pizza.png";
     $scope.img1width = 30;
-    $scope.img2      = "./img/chuchu.png";
     $scope.article   = `
  *Instructions*
 
