@@ -87,35 +87,33 @@ app2.controller("ctrl_main", ["$scope", "ngDialog", function($scope, ngDialog){
     $scope.img1width = 30;
     $scope.img2      = "./img/chuchu.png";
     $scope.article   = `
- *Experiment Instructions*
-hello
-woo
+ *Instructions*
+
+Imagine the left side of the screen is your smartphone screen. 
+You are scrolling thorugh your phone as usual when you see 
+this new filter on the app you are using. You decide to try it
+out and take a selfie using your phone.
+
+What you need to do is:
+1. Provide a picture as what you would do in real life.
+2. You can upload a picture of yourself using the "Picture" button.
+Or, take a selfie using the "Webcam" option.
+3. Make sure the picture shows your face clearly.
+4. Take a screen shot of the screen after you finish.
+5. You will be asked to upload the screenshot later in the 
+survey for validation purposes.
+
+
+Any picture you upload will be seen by the researchers only for 
+reseach purposes and will not be diseminated in anyway. After 
+the researcher verified your compliance of the task instructions,
+all pictures will be deleted immediately.
+If you have any concerns, please contact the reseacher:
 
 
 
 
-
-10
-
-
-
-
-
-
-
-
-
-20
-
-
-
-
-
-
-
-
-
-30`;
+`;
     $scope.cropper       = {};
     $scope.bounds        = {};
     $scope.bounds.left   = 0;
